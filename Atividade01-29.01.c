@@ -6,7 +6,7 @@
 #define LED_YELLOW 12
 #define LED_GREEN 13
 
-uint i = 0;
+uint i = 1;
 
 void iniciar_pinos() {
     gpio_init(LED_RED);
@@ -48,6 +48,11 @@ int main() {
     stdio_init_all();
  
     struct repeating_timer timer;
+
+        // inicia com o LED vermelho aceso
+        gpio_put(LED_YELLOW, false);
+        gpio_put(LED_GREEN, false);
+        gpio_put(LED_RED, true);
 
     // Configura um timer que chama o callback a cada 3000 ms (3 segundos)
     add_repeating_timer_ms(3000, repeating_time_callback, NULL, &timer);
